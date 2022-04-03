@@ -1,0 +1,44 @@
+<!-- Initial login page -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Facebook login</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+
+<body>
+    <div class="container">
+        <!-- <form method="post" action="http://localhost:9999/login"> -->
+        <form method="post" action="http://localhost:9999/protected/login">
+            <div id="divlogin">
+                <h1>Facebook Login</h1>
+                <div>
+                    <input type="text" class="textbox" id="txt_uname" name="txt_uname" placeholder="Username" />
+                </div>
+                <div>
+                    <input type="password" class="textbox" id="txt_uname" name="txt_pwd" placeholder="Password"/>
+                </div>
+                <div>
+                    <input type="submit" value="Login" name="but_submit" id="but_submit" />
+                </div>
+                <div>
+                    <input type="text" id="token" name="token" value = "test">
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- For CSRF Prevention -->
+<script type="text/javascript">
+    function randomString(length, chars) {
+        var result = '';
+        for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
+    }
+    var rString = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+    console.log(rString);
+    document.getElementById('token').value = rString;
+</script>
+</body>
+
+</html>
