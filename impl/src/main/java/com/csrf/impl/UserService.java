@@ -14,6 +14,7 @@ public class UserService {
     @Transactional
     public Integer updateUserCredUsingUsername(String userName){
         System.out.println("Updating password for user: " + userName);
+        //Validating user using username/csrf token
         Integer success = userRepo.updateUserPasswordByUserName(userName, "mypassword");
         if(success==1){
             System.out.println("Password updated successfully for user: " + userName);
