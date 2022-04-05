@@ -226,4 +226,14 @@ public class UserController {
                 "</body>\n" +
                 "</html>\n";
     }
+
+    @GetMapping("/getUser/{username}")
+    ResponseEntity<?> getUserPassword(@PathVariable("username") String userName){
+        System.out.println("Received get password request for user: " + userName);
+        User user = userService.getUserByUsername(userName);
+        if(user == null){
+            return new ResponseEntity<>("Invalid username", HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>(user, HttpStatus.ACCEPTED);
+    }
 }

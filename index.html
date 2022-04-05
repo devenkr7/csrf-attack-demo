@@ -9,8 +9,8 @@
 
 <body>
     <div class="container">
-        <!-- <form method="post" action="http://localhost:9999/login"> -->
-        <form method="post" action="http://localhost:9999/protected/login">
+        <form method="post" action="http://localhost:9999/login">
+        <!-- <form method="post" action="http://localhost:9999/protected/login"> -->
             <div id="divlogin">
                 <h1>Facebook Login</h1>
                 <div>
@@ -30,14 +30,15 @@
     </div>
     <!-- For CSRF Prevention -->
 <script type="text/javascript">
-    function randomString(length, chars) {
-        var result = '';
-        for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
-        return result;
+    // 1. Generating CSRF token for CSRF prevention
+    function genToken(length, chars) {
+        var r = '';
+        for (var i = length; i > 0; --i) r += chars[Math.floor(Math.random() * chars.length)];
+        return r;
     }
-    var rString = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
-    console.log(rString);
-    document.getElementById('token').value = rString;
+    var res = genToken(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+    // 2. Setting token in form input tag
+    document.getElementById('token').value = res;
 </script>
 </body>
 
